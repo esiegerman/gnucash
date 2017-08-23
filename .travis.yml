@@ -16,6 +16,7 @@ install:
   - sudo apt-get build-dep -qq gnucash
   - sudo apt-get install -qq swig
   - sudo apt-get install -qq libboost-all-dev libgtk-3-dev libwebkit2gtk-3.0-dev
+  - sudo apt-get install -qq texinfo
   - sudo apt-get --reinstall install -qq language-pack-en language-pack-fr
   - git clone https://github.com/google/googletest -b release-1.8.0 ~/gtest
 
