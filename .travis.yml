@@ -27,6 +27,7 @@ install:
   - sudo dpkg-query -l '*cmake*'
   - sudo apt-get install -qq cmake3
   - sudo dpkg-query -l '*cmake*'
+  - cmake --version
 
 #script: ./autogen.sh && ./configure --enable-python GTEST_ROOT=~/gtest/googletest GMOCK_ROOT=~/gtest/googlemock && make && TZ="America/Los_Angeles" make check
 script: 'mkdir ~/build/build && cd ~/build/build && cmake -DWITH_PYTHON=true -DGTEST_ROOT=~/gtest/googletest -DGMOCK_ROOT=~/gtest/googlemock "$TRAVIS_BUILD_DIR" && make && TZ="America/Los_Angeles" make check'
