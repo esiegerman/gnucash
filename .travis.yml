@@ -19,7 +19,5 @@ install:
 ##  - sudo apt-get --reinstall install -qq language-pack-en language-pack-fr
 ##  - git clone https://github.com/google/googletest -b release-1.8.0 ~/gtest
 #script: ./autogen.sh && ./configure --enable-python GTEST_ROOT=~/gtest/googletest GMOCK_ROOT=~/gtest/googlemock && make && TZ="America/Los_Angeles" make check
-#script: echo TRAVIS_BUILD_DIR: $TRAVIS_BUILD_DIR && mkdir ~/build && cd ~/build && cmake $TRAVIS_BUILD_DIR && make && TZ="America/Los_Angeles" make check
-matrix:
-  - script: FOO="bar" eval 'echo "foo is {$FOO}"'
-  - script: FOO="baz" eval 'echo "foo is {$FOO}"'
+script: echo TRAVIS_BUILD_DIR: $TRAVIS_BUILD_DIR && mkdir ~/build && cd ~/build && cmake $TRAVIS_BUILD_DIR && env && TZ="America/Los_Angeles" env
+#script: FOO="bar" eval 'echo "foo is {$FOO}"'
