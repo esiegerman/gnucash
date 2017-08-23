@@ -14,19 +14,18 @@ before_install:
 install:
 #  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.9; export CXX="g++-4.9" CC="gcc-4.9"; fi
   - sudo apt-get build-dep -qq gnucash
-  - false
   - sudo apt-get install -qq swig
   - sudo apt-get install -qq libboost-all-dev libgtk-3-dev libwebkit2gtk-3.0-dev
   - sudo apt-get --reinstall install -qq language-pack-en language-pack-fr
   - git clone https://github.com/google/googletest -b release-1.8.0 ~/gtest
 
+##  - sudo dpkg-query -l '*cmake*'
+##  - sudo apt-get install -qq cmake
+##  - sudo dpkg-query -l '*cmake*'
+##  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) updatesbogus"
+##  - sudo apt-get update -qq
   - sudo dpkg-query -l '*cmake*'
-  - sudo apt-get install -qq cmake
-  - sudo dpkg-query -l '*cmake*'
-  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) updatesbogus"
-  - sudo apt-get update -qq
-  - sudo dpkg-query -l '*cmake*'
-  - sudo apt-get install -qq cmake
+  - sudo apt-get install -qq cmake3
   - sudo dpkg-query -l '*cmake*'
 
 #script: ./autogen.sh && ./configure --enable-python GTEST_ROOT=~/gtest/googletest GMOCK_ROOT=~/gtest/googlemock && make && TZ="America/Los_Angeles" make check
