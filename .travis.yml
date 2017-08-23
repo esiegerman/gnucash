@@ -1,6 +1,6 @@
 # Test
 sudo: required
-dist: completelybogus
+dist: trusty
 branches:
   except:
     - trunk
@@ -11,14 +11,22 @@ compiler:
 before_install:
 #  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
-  - sudo dpkg-query -l '*cmake*'
 install:
 #  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.9; export CXX="g++-4.9" CC="gcc-4.9"; fi
   - sudo apt-get build-dep -qq gnucash
   - sudo apt-get install -qq swig
   - sudo apt-get install -qq libboost-all-dev libgtk-3-dev libwebkit2gtk-3.0-dev
-  - sudo apt-get install -qq cmake
   - sudo apt-get --reinstall install -qq language-pack-en language-pack-fr
   - git clone https://github.com/google/googletest -b release-1.8.0 ~/gtest
+
+  - sudo dpkg-query -l '*cmake*'
+  - sudo apt-get install -qq cmake
+  - sudo dpkg-query -l '*cmake*'
+  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) updates"
+  - sudo apt-get update -qq
+  - sudo dpkg-query -l '*cmake*'
+  - sudo apt-get install -qq cmake
+  - sudo dpkg-query -l '*cmake*'
+
 #script: ./autogen.sh && ./configure --enable-python GTEST_ROOT=~/gtest/googletest GMOCK_ROOT=~/gtest/googlemock && make && TZ="America/Los_Angeles" make check
 script: 'mkdir ~/build/build && cd ~/build/build && cmake -DWITH_PYTHON=true -DGTEST_ROOT=~/gtest/googletest -DGMOCK_ROOT=~/gtest/googlemock "$TRAVIS_BUILD_DIR" && make && TZ="America/Los_Angeles" make check'
