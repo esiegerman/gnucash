@@ -1,6 +1,6 @@
 # Test
 sudo: required
-dist: xenial
+dist: completelybogus
 branches:
   except:
     - trunk
